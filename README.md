@@ -1,12 +1,16 @@
 # minio-grafana-prometheus
 Example of a setup with minio, grafana and prometheus inside a docker compose
 
+## Prerequisites
+
+This project requires you to have Docker and Docker compose installed. Nothing else.
+
 ## Setup
 
 1. Start docker compose on the project folder with:
 
 ```
-docker-compose up-d
+docker-compose up -d
 ```
 
 2. MinIO will create a data directory inside the project folder. This directory will be used to physically store objects. Minio GUI will be available on localhost:9000. The credentials for MinIO can be found inside the docker compose configuration file, under its environment variables.
