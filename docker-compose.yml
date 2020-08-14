@@ -13,11 +13,14 @@ services:
             - MINIO_ACCESS_KEY=AKIAIOSFODNN7EXAMPLE
             - MINIO_SECRET_KEY=wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
             - MINIO_PROMETHEUS_AUTH_TYPE=public
-        command: server /data
+        command: server /data{1...4}
         ports:
             - "9000:9000"
         volumes: 
-            - ./data:/data
+            - ./data/erasure-code-set1:/data1
+            - ./data/erasure-code-set2:/data2
+            - ./data/erasure-code-set3:/data3
+            - ./data/erasure-code-set4:/data4
     grafana: 
         image: grafana/grafana
         ports:
