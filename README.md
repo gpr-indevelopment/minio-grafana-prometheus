@@ -25,4 +25,4 @@ docker-compose up -d
 ### Notes
 
 1. Bucket versioning, according to [the docs](https://docs.min.io/docs/minio-bucket-versioning-guide.html), can only be applied through the MinIO SDK.
-2. I could not upload files to versioned buckets through MinIO's GUI. The upload would hang at 100%. The same thing would not happen for default buckets. 
+2. Also, bucket versioning only works with the [erasure code setup](https://docs.min.io/docs/minio-erasure-code-quickstart-guide.html). Please check `docker-compose.yml` configuration.
