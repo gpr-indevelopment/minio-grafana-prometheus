@@ -39,4 +39,9 @@ public class MinioService {
             System.out.println(item.lastModified() + "\t" + item.size() + "\t" + item.objectName() + "\t" + item.versionId() + "\t" + item.isDeleteMarker());
         }
     }
+
+    public void deleteObject(String objectName, String bucketName) throws Exception {
+        RemoveObjectArgs args = RemoveObjectArgs.builder().bucket(bucketName).object(objectName).build();
+        minioClientConfig.getMinioClient().removeObject(args);
+    }
 }
