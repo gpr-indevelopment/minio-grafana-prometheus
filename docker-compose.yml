@@ -13,6 +13,12 @@ services:
             - MINIO_ACCESS_KEY=AKIAIOSFODNN7EXAMPLE
             - MINIO_SECRET_KEY=wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
             - MINIO_PROMETHEUS_AUTH_TYPE=public
+            - MINIO_CACHE="on"
+            - MINIO_CACHE_DRIVES=/mnt/drive1,/mnt/drive2
+            - MINIO_CACHE_QUOTA=80 # 80% of the drive will be used for caching
+            - MINIO_CACHE_AFTER=1 # Object will be cached after the first request to it
+            - MINIO_CACHE_WATERMARK_LOW=70 # Least accessed objects will be erased after the cache disk reaches the 70% watermark
+            - MINIO_CACHE_WATERMARK_HIGH=90
         command: server /data{1...4}
         ports:
             - "9000:9000"
