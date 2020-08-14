@@ -1,1 +1,10 @@
 data
+minio-java-sdk-demo/target/
+minio-java-sdk-demo/.mvn
+
+### IntelliJ IDEA ###
+minio-java-sdk-demo/.idea
+minio-java-sdk-demo/*.iws
+minio-java-sdk-demo/*.iml
+minio-java-sdk-demo/*.ipr
+
