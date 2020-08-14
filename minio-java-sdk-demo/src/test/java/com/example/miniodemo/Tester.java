@@ -5,6 +5,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.io.File;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.UUID;
 
 @SpringBootTest
@@ -22,22 +24,25 @@ public class Tester {
 
     @Test
     public void enableVersioning() throws Exception {
-        minioService.enableVersioning("feb63a9c-67d7-46c9-9a12-29fe384334e3");
+        minioService.enableVersioning("bf7b17c7-cb2c-4b3c-b94b-d2eee7c65b2e");
     }
 
     @Test
     public void saveMultipleTestObjectsToBucket() throws Exception {
+        Map<String, String> metaData = new HashMap<>();
+        metaData.put("Test-Key", "Value");
+        metaData.put("Test-Key-Two", "Value-Two");
         File tempFile = File.createTempFile("tempFile", ".txt");
         tempFile.deleteOnExit();
-        int numberOfSaves = 3;
+        int numberOfSaves = 6;
         for (int i = 0; i < numberOfSaves; i++) {
-            minioService.saveFileToBucket(tempFile, "feb63a9c-67d7-46c9-9a12-29fe384334e3");
+            minioService.saveFileToBucket(tempFile, "bf7b17c7-cb2c-4b3c-b94b-d2eee7c65b2e", metaData);
         }
     }
 
     @Test
     public void listObjects() throws Exception {
-        minioService.listObjects("feb63a9c-67d7-46c9-9a12-29fe384334e3");
+        minioService.listObjects("bf7b17c7-cb2c-4b3c-b94b-d2eee7c65b2e", true, false);
     }
 
     @Test

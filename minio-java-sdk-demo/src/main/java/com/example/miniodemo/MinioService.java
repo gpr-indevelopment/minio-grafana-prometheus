@@ -8,6 +8,8 @@ import org.springframework.stereotype.Service;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.InputStream;
+import java.util.Map;
+import java.util.Objects;
 
 @Service
 public class MinioService {
@@ -25,18 +27,26 @@ public class MinioService {
         minioClientConfig.getMinioClient().enableVersioning(versioningArgs);
     }
 
-    public void saveFileToBucket(File file, String bucketName) throws Exception {
+    public void saveFileToBucket(File file, String bucketName, Map<String, String> metaData) throws Exception {
         InputStream stream = new FileInputStream(file);
-        PutObjectArgs args = PutObjectArgs.builder().bucket(bucketName).object(file.getName()).stream(stream, stream.available(), -1).build();
+        PutObjectArgs args = PutObjectArgs.builder()
+                .bucket(bucketName)
+                .object(file.getName())
+                .userMetadata(metaData)
+                .stream(stream, stream.available(), -1)
+                .build();
         minioClientConfig.getMinioClient().putObject(args);
     }
 
-    public void listObjects(String bucketName) throws Exception{
-        ListObjectsArgs args = ListObjectsArgs.builder().bucket(bucketName).includeVersions(true).build();
+    public void listObjects(String bucketName, boolean includeMetaData, boolean includeVersion) throws Exception{
+        ListObjectsArgs args = ListObjectsArgs.builder().bucket(bucketName).includeUserMetadata(includeMetaData).includeVersions(includeVersion).build();
         Iterable<Result<Item>> results = minioClientConfig.getMinioClient().listObjects(args);
         for (Result<Item> result : results) {
             Item item = result.get();
             System.out.println(item.lastModified() + "\t" + item.size() + "\t" + item.objectName() + "\t" + item.versionId() + "\t" + item.isDeleteMarker());
+            if(Objects.nonNull(item.userMetadata())) {
+                item.userMetadata().forEach((key, value) -> System.out.println("\t Key=" + key + " Value=" + value));
+            }
         }
     }
 
