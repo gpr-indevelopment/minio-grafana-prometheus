@@ -26,3 +26,6 @@ docker-compose up -d
 
 1. Bucket versioning, according to [the docs](https://docs.min.io/docs/minio-bucket-versioning-guide.html), can only be applied through the MinIO SDK.
 2. Also, bucket versioning only works with the [erasure code setup](https://docs.min.io/docs/minio-erasure-code-quickstart-guide.html). Please check `docker-compose.yml` configuration.
+3. One can add metadata to objects saved on MinIO. That metadata can be retrieved afterwards.
+4. The listObjects method on the SDK cannot be used to retrieve versions and user metadata at the same time.
+5. The owner of an object (`item.owner()`) is the key of the account that created the object, as stated [here](https://acloud.guru/forums/aws-certified-solutions-architect-associate/discussion/-KPST25Z-1SVLVN7bfDW/owner-of-a-s3-bucket-file-in-s3-bucket).
