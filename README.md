@@ -17,6 +17,7 @@ docker-compose up -d
 3. Prometheus will be available on localhost:9090.
 4. Grafana will be available on localhost:3000. Log in with admin/admin.
 5. Add the prometheus datasource to grafana, with url prometheus:9090.
+5. Create a bucket named "test" on MinIO, by accessing localhost:9000 and selecting the icon on the bottom right corner of the UI.
 6. The `grafana-dashboard.json` file can be imported to a Grafana dashboard. It is based on [this documentation](https://github.com/minio/minio/blob/master/docs/metrics/prometheus/grafana/README.md), and adapted to the compose scenario.
 
 ### Troubleshooting
