@@ -21,3 +21,8 @@ docker-compose up -d
 ### Troubleshooting
 
 1. Prometheus may not start correctly alongside the compose. Sometimes it fais with an error informing `prometheus.yml` file doesn't exist. Restarting its container a couple of times should solve the issue.
+
+### Notes
+
+1. Bucket versioning, according to [the docs](https://docs.min.io/docs/minio-bucket-versioning-guide.html), can only be applied through the MinIO SDK.
+2. I could not upload files to versioned buckets through MinIO's GUI. The upload would hang at 100%. The same thing would not happen for default buckets. 
