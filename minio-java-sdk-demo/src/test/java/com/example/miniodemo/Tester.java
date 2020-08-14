@@ -49,4 +49,9 @@ public class Tester {
     public void deleteObject() throws Exception {
         minioService.deleteObject("tempFile6122685719368647483.txt", "feb63a9c-67d7-46c9-9a12-29fe384334e3");
     }
+
+    @Test
+    public void statObject() throws Exception {
+        minioService.getObjectStats("tempFile8899535745467921568.txt", "bf7b17c7-cb2c-4b3c-b94b-d2eee7c65b2e");
+    }
 }

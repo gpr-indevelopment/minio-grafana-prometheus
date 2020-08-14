@@ -54,4 +54,9 @@ public class MinioService {
         RemoveObjectArgs args = RemoveObjectArgs.builder().bucket(bucketName).object(objectName).build();
         minioClientConfig.getMinioClient().removeObject(args);
     }
+
+    public void getObjectStats(String objectName, String bucketName) throws Exception{
+        StatObjectArgs args = StatObjectArgs.builder().bucket(bucketName).object(objectName).build();
+        ObjectStat stat = minioClientConfig.getMinioClient().statObject(args);
+    }
 }
