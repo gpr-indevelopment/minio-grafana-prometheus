@@ -64,4 +64,9 @@ public class MinioService {
         SetBucketLifeCycleArgs args = SetBucketLifeCycleArgs.builder().bucket(bucketName).config(xmlConfig).build();
         minioClientConfig.getMinioClient().setBucketLifeCycle(args);
     }
+
+    public void getObjectFromSQL(String sqlExpression) throws Exception {
+        SelectObjectContentArgs args = SelectObjectContentArgs.builder().sqlExpression(sqlExpression).build();
+        minioClientConfig.getMinioClient().selectObjectContent(args);
+    }
 }

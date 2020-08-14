@@ -33,4 +33,4 @@ docker-compose up -d
 7. Bucket Lifecycle can be configured so that files under a folder, or older than a certain delete, may be deleted or stored somewhere else. The MinIO client on Java receives a config for the lifecycle as a xml. The documentation for object lifecycle management can be found [here](https://docs.aws.amazon.com/AmazonS3/latest/dev/object-lifecycle-mgmt.html).
 8. [Notifications](https://docs.min.io/docs/minio-bucket-notification-guide.html) can be pushed to a PostgreSQL database, or Apache Kafka, on most of the operations available to objects in a bucket (PUT, POST, DELETE...).
 9. Caching on MinIO can only be mounted on file systems that support `atime`, according to the [docs](https://github.com/minio/minio/blob/master/docs/disk-caching/DESIGN.md). That support can be mainly found in Unix. I was not able to implement and test caching.
-
+10. [The Select API](https://docs.min.io/docs/minio-select-api-quickstart-guide.html) can be used to search objects in the CSV, JSON or Parquet format. It is not really usefull for CAD, but it is a nice flexibility feature.
