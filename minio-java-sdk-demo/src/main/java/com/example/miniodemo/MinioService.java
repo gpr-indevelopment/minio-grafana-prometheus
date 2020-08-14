@@ -59,4 +59,9 @@ public class MinioService {
         StatObjectArgs args = StatObjectArgs.builder().bucket(bucketName).object(objectName).build();
         ObjectStat stat = minioClientConfig.getMinioClient().statObject(args);
     }
+
+    public void setBucketLifecycle(String bucketName, String xmlConfig) throws Exception {
+        SetBucketLifeCycleArgs args = SetBucketLifeCycleArgs.builder().bucket(bucketName).config(xmlConfig).build();
+        minioClientConfig.getMinioClient().setBucketLifeCycle(args);
+    }
 }

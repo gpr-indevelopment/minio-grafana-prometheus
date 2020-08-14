@@ -30,4 +30,4 @@ docker-compose up -d
 4. The listObjects method on the SDK cannot be used to retrieve versions and user metadata at the same time.
 5. The owner of an object (`item.owner()`) is the key of the account that created the object, as stated [here](https://acloud.guru/forums/aws-certified-solutions-architect-associate/discussion/-KPST25Z-1SVLVN7bfDW/owner-of-a-s3-bucket-file-in-s3-bucket).
 6. The StatObject method returns some interesting information related to an object such as the date it was created, its bucket, etc...
-
+7. Bucket Lifecycle can be configured so that files under a folder, or older than a certain delete, may be deleted or stored somewhere else. The MinIO client on Java receives a config for the lifecycle as a xml. The documentation for object lifecycle management can be found [here](https://docs.aws.amazon.com/AmazonS3/latest/dev/object-lifecycle-mgmt.html).
