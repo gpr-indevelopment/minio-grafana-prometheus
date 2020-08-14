@@ -29,3 +29,5 @@ docker-compose up -d
 3. One can add metadata to objects saved on MinIO. That metadata can be retrieved afterwards.
 4. The listObjects method on the SDK cannot be used to retrieve versions and user metadata at the same time.
 5. The owner of an object (`item.owner()`) is the key of the account that created the object, as stated [here](https://acloud.guru/forums/aws-certified-solutions-architect-associate/discussion/-KPST25Z-1SVLVN7bfDW/owner-of-a-s3-bucket-file-in-s3-bucket).
+6. The StatObject method returns some interesting information related to an object such as the date it was created, its bucket, etc...
+
