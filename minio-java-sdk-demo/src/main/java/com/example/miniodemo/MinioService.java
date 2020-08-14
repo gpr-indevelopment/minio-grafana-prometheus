@@ -1,8 +1,7 @@
 package com.example.miniodemo;
 
-import io.minio.EnableVersioningArgs;
-import io.minio.MakeBucketArgs;
-import io.minio.PutObjectArgs;
+import io.minio.*;
+import io.minio.messages.Item;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -30,5 +29,14 @@ public class MinioService {
         InputStream stream = new FileInputStream(file);
         PutObjectArgs args = PutObjectArgs.builder().bucket(bucketName).object(file.getName()).stream(stream, stream.available(), -1).build();
         minioClientConfig.getMinioClient().putObject(args);
+    }
+
+    public void listObjects(String bucketName) throws Exception{
+        ListObjectsArgs args = ListObjectsArgs.builder().bucket(bucketName).includeVersions(true).build();
+        Iterable<Result<Item>> results = minioClientConfig.getMinioClient().listObjects(args);
+        for (Result<Item> result : results) {
+            Item item = result.get();
+            System.out.println(item.lastModified() + "\t" + item.size() + "\t" + item.objectName() + "\t" + item.versionId() + "\t" + item.isDeleteMarker());
+        }
     }
 }

@@ -34,4 +34,9 @@ public class Tester {
             minioService.saveFileToBucket(tempFile, "feb63a9c-67d7-46c9-9a12-29fe384334e3");
         }
     }
+
+    @Test
+    public void listObjects() throws Exception {
+        minioService.listObjects("feb63a9c-67d7-46c9-9a12-29fe384334e3");
+    }
 }
