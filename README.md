@@ -16,7 +16,8 @@ docker-compose up -d
 2. MinIO will create a data directory inside the project folder. This directory will be used to physically store objects. Minio GUI will be available on localhost:9000. The credentials for MinIO can be found inside the docker compose configuration file, under its environment variables.
 3. Prometheus will be available on localhost:9090.
 4. Grafana will be available on localhost:3000. Log in with admin/admin.
-5. The `grafana-dashboard.json` file can be imported to a Grafana dashboard. It is based on [this documentation](https://github.com/minio/minio/blob/master/docs/metrics/prometheus/grafana/README.md), and adapted to the compose scenario.
+5. Add the prometheus datasource to grafana, with url prometheus:9090.
+6. The `grafana-dashboard.json` file can be imported to a Grafana dashboard. It is based on [this documentation](https://github.com/minio/minio/blob/master/docs/metrics/prometheus/grafana/README.md), and adapted to the compose scenario.
 
 ### Troubleshooting
 
